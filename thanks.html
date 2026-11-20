@@ -888,22 +888,6 @@
     var df = document.querySelector('.details'), sn = document.querySelector('.sent-note');
     if (df && sn) { df.hidden = true; sn.hidden = false; }
   }
-  // send forms in the background, then land on our own thank-you page
-  document.querySelectorAll('form[action^="https://formsubmit.co/"]').forEach(function (f) {
-    f.addEventListener('submit', function (e) {
-      if (!window.fetch || f.dataset.sending) return;
-      e.preventDefault();
-      f.dataset.sending = '1';
-      var btn = f.querySelector('button[type="submit"]');
-      if (btn) btn.disabled = true;
-      var next = (f.querySelector('input[name="_next"]') || {}).value || '/thanks.html';
-      var url = f.action.replace('formsubmit.co/', 'formsubmit.co/ajax/');
-      fetch(url, { method: 'POST', body: new FormData(f), headers: { 'Accept': 'application/json' } })
-        .then(function (r) { return r.json(); })
-        .then(function () { location.href = next; })
-        .catch(function () { f.submit(); });
-    });
-  });
 </script>
 </body>
 </html>
