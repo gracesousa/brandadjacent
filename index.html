@@ -240,6 +240,11 @@
   .contact .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 96px); align-items: end; }
   .contact h2 { font-size: clamp(64px, 10vw, 156px); }
   .contact .inquire { margin-top: 0; }
+  .contact-lead { font-size: 19px; color: var(--soft); max-width: 440px; }
+  .contact-ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+  .contact-ctas .pill { font-size: 16px; padding: 15px 26px; }
+  .contact-ctas .pill.alt { background: transparent; color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--ink); }
+  .contact-ctas .pill.alt:hover { background: var(--butter); box-shadow: inset 0 0 0 1.5px var(--butter); }
   .contact .field.area { margin-top: 14px; align-items: flex-start; }
   .field textarea {
     flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; resize: vertical;
@@ -547,7 +552,7 @@
       <a class="u" href="#about">About</a>
       <a class="u" href="#services">Services</a>
       <a class="u" href="https://www.linkedin.com/in/grace-sousa" target="_blank" rel="noopener">LinkedIn</a>
-      <a class="pill" href="#contact">Inquire <span class="arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="pill" href="/inquire.html">Inquire <span class="arrow" aria-hidden="true">&rarr;</span></a>
     </nav>
   </div>
 </header>
@@ -558,7 +563,7 @@
   <!-- Hero: who I am, who I've worked with, what I do -->
   <section class="hero">
     <div class="wrap">
-      <div class="booking-wrap"><a class="booking" href="#contact">
+      <div class="booking-wrap"><a class="booking" href="/inquire.html">
         <span class="live" aria-hidden="true"></span>
         <span class="booking-text">Now booking new projects</span>
         <span class="booking-arrow" aria-hidden="true">&rarr;</span>
@@ -728,7 +733,7 @@
         <p class="rates-head display">The <em>investment.</em></p>
         <div>
           <p>Every engagement is scoped around your goals, timeline and budget, whether that's a single launch or ongoing support. Reach out and we'll put together a proposal that makes sense for where your brand is right now.</p>
-          <a class="pill" href="#contact">Request a proposal <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="pill" href="/inquire.html">Request a proposal <span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
     </div>
@@ -748,23 +753,11 @@
     <div class="wrap">
       <h2 class="display reveal split" id="contact-title">Let's <em>talk.</em></h2>
       <div class="reveal">
-        <form class="inquire" method="POST" action="https://formsubmit.co/grace@brandadjacent.com">
-          <input type="hidden" name="_subject" value="New inquiry from brandadjacent.com">
-          <input type="hidden" name="_next" value="https://brandadjacent.com/thanks.html">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_autoresponse" value="Hi there, thank you for reaching out to Brand Adjacent. We've received your inquiry and will be in touch within 48 hours to learn more about your brand and what you're working on. If there's anything else you'd like to share in the meantime, just reply to this email. Warmly, Grace Sousa, Founder, Brand Adjacent, brandadjacent.com">
-          <p class="hp"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></p>
-          <label class="title" for="inq-bottom">Tell us about your brand, or request a proposal</label>
-          <div class="field">
-            <input id="inq-bottom" type="email" name="email" placeholder="Your email address" required autocomplete="email">
-          </div>
-          <label class="sr" for="inq-details">Project details</label>
-          <div class="field area">
-            <textarea id="inq-details" name="details" rows="3" placeholder="A few lines about your brand, your goals and your timing (optional)"></textarea>
-          </div>
-          <button type="submit" class="pill send">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
-        </form>
+        <p class="contact-lead">Tell us what you need, or grab time for a quick intro call. Either way, we'll take it from there.</p>
+        <div class="contact-ctas">
+          <a class="pill" href="/inquire.html">Start an inquiry <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="pill alt" href="/inquire.html#book">Book a call</a>
+        </div>
         <div class="links">
           <a href="mailto:grace@brandadjacent.com?subject=Inquiry">grace@brandadjacent.com</a>
           <a href="https://www.linkedin.com/in/grace-sousa" target="_blank" rel="noopener">LinkedIn</a>
