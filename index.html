@@ -343,6 +343,11 @@
   .results-copy h2 { font-size: clamp(40px, 4.8vw, 68px); }
   .results-copy h2 em { color: var(--butter); }
   .results-copy p { margin-top: 18px; color: rgba(243,239,231,.82); max-width: 380px; }
+  .results-copy p + p { margin-top: 12px; }
+  .jargon { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; max-width: 420px; }
+  .jargon li { font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px; color: var(--bone);
+    border: 1px solid rgba(var(--pop-rgb), .45); background: rgba(var(--pop-rgb), .08); transition: background .25s, color .25s; }
+  .jargon li:hover { background: var(--butter); color: var(--ink); }
   .kpis { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; font-size: 14px; font-weight: 500; }
   .kpis li { display: flex; align-items: center; gap: 8px; }
   .kpis .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--butter); }
@@ -639,11 +644,10 @@
       <div class="panel-dark reveal">
         <div class="results-copy">
           <h2 class="display split" id="results-title">Built to <em>perform.</em></h2>
-          <p>Every campaign starts with a clear goal and ends with numbers you can see: more reach, deeper engagement and more of the right people taking action.</p>
-          <ul class="kpis">
-            <li><span class="swatch"></span>Reach</li>
-            <li><span class="swatch"></span>Engagement</li>
-            <li><span class="swatch"></span>Conversions</li>
+          <p>We set your ROAS and spend targets up front, then build the plan around them. Full-funnel media from prospecting to retargeting, always-on creative testing, and budget pacing that moves spend toward what's converting.</p>
+          <p>You get clear reporting on CAC, CPA, CTR and conversion rate, so every dollar has a job and every decision has data behind it.</p>
+          <ul class="jargon" aria-label="What we optimize for">
+            <li>ROAS targets</li><li>Spend pacing</li><li>CAC &amp; CPA</li><li>Full-funnel</li><li>Creative testing</li><li>Lookalike audiences</li><li>Retargeting</li><li>Attribution</li>
           </ul>
         </div>
 
