@@ -573,7 +573,7 @@
   .switch button[aria-pressed="true"] { background: var(--moss-deep); color: var(--bone); }
   .inq { padding-bottom: var(--section); }
   .inq .wrap { max-width: 980px; }
-  .inq-panel { position: relative; overflow: hidden; border-radius: 28px; background: var(--moss-deep); color: var(--bone); padding: clamp(28px, 4.5vw, 60px); }
+  .inq-panel { position: relative; overflow: hidden; overflow: clip; border-radius: 28px; background: var(--moss-deep); color: var(--bone); padding: clamp(28px, 4.5vw, 60px); }
   .inq-panel::after { content: ""; position: absolute; right: -140px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%;
     background: radial-gradient(circle, rgba(255,143,193,.22), transparent 70%); pointer-events: none; }
   .inq-panel[hidden] { display: none !important; }
@@ -608,7 +608,9 @@
   .book h2 { font-size: clamp(38px, 4.4vw, 60px); }
   .book h2 em { color: var(--butter); }
   .book .intro { margin: 14px 0 26px; color: rgba(243,239,231,.8); max-width: 520px; }
-  .cal-embed { background: var(--bone); border-radius: 18px; overflow: hidden; min-height: 680px; }
+  .cal-embed { background: var(--bone); border-radius: 18px; overflow: hidden; height: 720px; min-width: 280px; }
+  .cal-embed iframe { width: 100% !important; height: 100% !important; }
+  @media (max-width: 700px) { .cal-embed { height: 940px; } }
   .cal-soon { border: 1px dashed rgba(243,239,231,.3); border-radius: 18px; padding: 28px; color: rgba(243,239,231,.85); }
   .cal-soon b { color: var(--butter); font-weight: 500; }
   @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } .switch button { padding: 12px 16px; font-size: 14px; } }
@@ -708,7 +710,7 @@
 
       <div class="inq-panel book" id="panel-book" hidden>
         <h2 class="display">Book a <em>call.</em></h2>
-        <p class="intro">Pick a time for a short intro call. We'll talk through your brand, your goals and where we can help.</p>
+        <p class="intro">Pick a time for a 30-minute intro call. We'll talk through your brand, your goals and where we can help.</p>
         <div class="cal-slot"></div>
         <div class="inq-actions" style="margin-top:22px">
           <button type="button" class="ghost" data-show="form">Send an inquiry instead</button>
@@ -971,7 +973,7 @@
 
   // ---------- Inquire page ----------
   // Paste the Calendly link here once it's set up, e.g. 'https://calendly.com/brandadjacent/intro'
-  var CALENDLY_URL = '';
+  var CALENDLY_URL = 'https://calendly.com/grace-brandadjacent/30min';
   var slot = document.querySelector('.cal-slot');
   var calLoaded = false;
   function loadCal() {
