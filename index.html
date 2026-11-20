@@ -343,8 +343,10 @@
   .results-copy h2 { font-size: clamp(40px, 4.8vw, 68px); }
   .results-copy h2 em { color: var(--butter); }
   .results-copy p { margin-top: 18px; color: rgba(243,239,231,.82); max-width: 380px; }
-  .results-copy .jargon { margin-top: 22px; font-size: 13px; font-weight: 500; letter-spacing: .02em; color: var(--butter); }
-  .results-copy .jargon i { font-style: normal; color: rgba(243,239,231,.6); margin: 0 8px; }
+  .results-copy .jargon { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; max-width: 420px; }
+  .results-copy .jargon li { font-size: 13.5px; font-weight: 500; line-height: 1.3; text-align: center; display: grid; place-items: center; color: var(--bone); padding: 12px 8px; border-radius: 12px;
+    border: 1px solid rgba(var(--pop-rgb), .55); background: rgba(var(--pop-rgb), .1); transition: background .25s, color .25s, transform .25s; }
+  .results-copy .jargon li:hover { background: var(--butter); color: var(--ink); transform: translateY(-2px); }
   .kpis { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; font-size: 14px; font-weight: 500; }
   .kpis li { display: flex; align-items: center; gap: 8px; }
   .kpis .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--butter); }
@@ -642,7 +644,7 @@
         <div class="results-copy">
           <h2 class="display split" id="results-title">Built to <em>perform.</em></h2>
           <p>We set your ROAS and spend targets up front, then build full-funnel campaigns around them, with clear reporting on CAC, CPA and conversion rate.</p>
-          <p class="jargon">ROAS targets <i>·</i> Spend pacing <i>·</i> Creative testing</p>
+          <ul class="jargon"><li>ROAS targets</li><li>Spend pacing</li><li>Creative testing</li></ul>
         </div>
 
         <figure class="chart big" aria-label="Illustration: reach rising sharply after a campaign launch">
