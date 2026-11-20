@@ -343,11 +343,8 @@
   .results-copy h2 { font-size: clamp(40px, 4.8vw, 68px); }
   .results-copy h2 em { color: var(--butter); }
   .results-copy p { margin-top: 18px; color: rgba(243,239,231,.82); max-width: 380px; }
-  .results-copy p + p { margin-top: 12px; }
-  .jargon { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; max-width: 420px; }
-  .jargon li { font-size: 13px; font-weight: 500; padding: 6px 12px; border-radius: 999px; color: var(--bone);
-    border: 1px solid rgba(var(--pop-rgb), .45); background: rgba(var(--pop-rgb), .08); transition: background .25s, color .25s; }
-  .jargon li:hover { background: var(--butter); color: var(--ink); }
+  .results-copy .jargon { margin-top: 22px; font-size: 13px; font-weight: 500; letter-spacing: .02em; color: var(--butter); }
+  .results-copy .jargon i { font-style: normal; color: rgba(243,239,231,.6); margin: 0 8px; }
   .kpis { list-style: none; display: flex; gap: 20px; flex-wrap: wrap; margin-top: 24px; font-size: 14px; font-weight: 500; }
   .kpis li { display: flex; align-items: center; gap: 8px; }
   .kpis .swatch { width: 10px; height: 10px; border-radius: 50%; background: var(--butter); }
@@ -640,15 +637,12 @@
   <!-- Results: illustrative growth graphics -->
   <section class="results" aria-labelledby="results-title">
     <div class="wrap scale-in">
-      <div class="bubble-field perf" data-n="36" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
+      <div class="bubble-field perf" data-n="22" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
       <div class="panel-dark reveal">
         <div class="results-copy">
           <h2 class="display split" id="results-title">Built to <em>perform.</em></h2>
-          <p>We set your ROAS and spend targets up front, then build the plan around them. Full-funnel media from prospecting to retargeting, always-on creative testing, and budget pacing that moves spend toward what's converting.</p>
-          <p>You get clear reporting on CAC, CPA, CTR and conversion rate, so every dollar has a job and every decision has data behind it.</p>
-          <ul class="jargon" aria-label="What we optimize for">
-            <li>ROAS targets</li><li>Spend pacing</li><li>CAC &amp; CPA</li><li>Full-funnel</li><li>Creative testing</li><li>Lookalike audiences</li><li>Retargeting</li><li>Attribution</li>
-          </ul>
+          <p>We set your ROAS and spend targets up front, then build full-funnel campaigns around them, with clear reporting on CAC, CPA and conversion rate.</p>
+          <p class="jargon">ROAS targets <i>·</i> Spend pacing <i>·</i> Creative testing</p>
         </div>
 
         <figure class="chart big" aria-label="Illustration: reach rising sharply after a campaign launch">
