@@ -591,36 +591,6 @@
     </div>
   </section>
 
-  <section class="next" aria-labelledby="next-title">
-    <div class="wrap">
-      <div class="next-panel reveal">
-        <div>
-          <h2 class="display split" id="next-title">Want to tell us <em>a little more?</em></h2>
-          <p class="intro">Totally optional. A few lines about your brand, your goals and your timing help us come back with ideas, not just questions.</p>
-        </div>
-        <form class="details" method="POST" action="https://formsubmit.co/grace@brandadjacent.com">
-          <input type="hidden" name="_subject" value="Project details from brandadjacent.com">
-          <input type="hidden" name="_next" value="https://brandadjacent.com/thanks.html?sent=1#next-title">
-          <input type="hidden" name="_template" value="table">
-          <input type="hidden" name="_captcha" value="false">
-          <p class="hp"><label>Leave this empty <input type="text" name="_honey" tabindex="-1" autocomplete="off"></label></p>
-          <label class="sr" for="d-email">Your email</label>
-          <input id="d-email" type="email" name="email" placeholder="Your email" required autocomplete="email">
-          <label class="sr" for="d-msg">Project details</label>
-          <textarea id="d-msg" name="details" rows="4" required placeholder="e.g. We're launching a new product in spring and want to grow on Instagram. Budget is flexible."></textarea>
-          <div class="next-actions">
-            <button type="submit" class="pill">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
-            <a class="ghost" href="/">Back to home</a>
-          </div>
-        </form>
-        <div class="sent-note" hidden>
-          <p><b>Got it, thank you.</b> That helps a lot. We'll come back to you within 48 hours.</p>
-          <div class="next-actions"><a class="ghost" href="/">Back to home</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <section class="explore" aria-labelledby="explore-title">
     <div class="wrap reveal">
       <h2 class="display split" id="explore-title">While you <em>wait.</em></h2>
@@ -883,11 +853,6 @@
   }
   requestAnimationFrame(frame);
 
-  // after sending project details, swap the form for a confirmation
-  if (/[?&]sent=1/.test(location.search)) {
-    var df = document.querySelector('.details'), sn = document.querySelector('.sent-note');
-    if (df && sn) { df.hidden = true; sn.hidden = false; }
-  }
 </script>
 </body>
 </html>

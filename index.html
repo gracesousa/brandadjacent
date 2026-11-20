@@ -240,6 +240,13 @@
   .contact .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: clamp(40px, 6vw, 96px); align-items: end; }
   .contact h2 { font-size: clamp(64px, 10vw, 156px); }
   .contact .inquire { margin-top: 0; }
+  .contact .field.area { margin-top: 14px; align-items: flex-start; }
+  .field textarea {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; resize: vertical;
+    font: inherit; font-size: 19px; line-height: 1.5; padding: 8px 0; color: inherit; min-height: 84px;
+  }
+  .field textarea::placeholder { color: #9A9285; }
+  .contact .send { margin-top: 24px; }
   .contact .links { margin-top: 26px; display: flex; gap: 28px; flex-wrap: wrap; font-weight: 500; font-size: 15px; }
   .contact .links a { border-bottom: 1px solid var(--ink); padding-bottom: 2px; }
   .contact .links a:hover { color: var(--moss); border-color: var(--moss); }
@@ -751,8 +758,12 @@
           <label class="title" for="inq-bottom">Tell us about your brand, or request a proposal</label>
           <div class="field">
             <input id="inq-bottom" type="email" name="email" placeholder="Your email address" required autocomplete="email">
-            <button type="submit" class="pill">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
           </div>
+          <label class="sr" for="inq-details">Project details</label>
+          <div class="field area">
+            <textarea id="inq-details" name="details" rows="3" placeholder="A few lines about your brand, your goals and your timing (optional)"></textarea>
+          </div>
+          <button type="submit" class="pill send">Send <span class="arrow" aria-hidden="true">&rarr;</span></button>
         </form>
         <div class="links">
           <a href="mailto:grace@brandadjacent.com?subject=Inquiry">grace@brandadjacent.com</a>
