@@ -609,6 +609,12 @@
     .ads li { padding-top: 9px; padding-bottom: 9px; }
     .roas-chart .plot { min-height: 180px; }
   }
+  .dash-bar { justify-content: space-between; }
+  .reels { display: flex; gap: 6px; margin-top: 14px; }
+  .reels .thumb { flex: 1; width: auto; height: auto; aspect-ratio: 9 / 16; max-height: 86px; }
+  .reels .thumb b { position: absolute; top: 4px; left: 4px; font-size: 8px; font-weight: 700; background: var(--butter); color: var(--ink); padding: 1px 5px; border-radius: 999px; }
+  .reels .thumb.t1 { box-shadow: 0 0 0 2px var(--butter); }
+  .spark rect { fill: rgba(79,211,230,.45); }
   @media (prefers-reduced-motion: reduce) { .dash-live { animation: none; } .cells i { transition: none; } }
 
   /* ---------- Cyan hover on links ---------- */
@@ -781,7 +787,7 @@
   <!-- Results: illustrative growth graphics -->
   <section class="results" aria-labelledby="results-title">
     <div class="wrap scale-in">
-      <div class="bubble-field perf" data-n="10" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
+      <div class="bubble-field perf" data-n="22" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
       <div class="panel-dark perf-panel reveal">
         <div class="perf-head">
           <h2 class="display split" id="results-title">Built to <em>perform.</em></h2>
@@ -790,75 +796,34 @@
 
         <div class="dash" aria-label="Illustrative paid social dashboard">
           <div class="dash-bar">
-            <div class="dash-camp">
-              <span class="dash-live" aria-hidden="true"></span>
-              <b>Spring launch</b>
-              <span class="chans"><span>Meta</span><span>TikTok</span><span>Reels</span></span>
-            </div>
-            <div class="pacing">
-              <span class="lbl">Spend pacing</span>
-              <span class="track"><i data-k="pace"></i></span>
-              <span class="pace-val"><b data-k="spent">$18.4k</b> of <span data-k="budget">$25k</span></span>
-            </div>
-            <div class="range" role="group" aria-label="Date range">
-              <button type="button" data-r="7">7D</button>
-              <button type="button" data-r="30" aria-pressed="true">30D</button>
-              <button type="button" data-r="90">90D</button>
-            </div>
+            <div class="dash-camp"><span class="dash-live" aria-hidden="true"></span><b>Last 30 days</b></div>
+            <span class="chans"><span>Meta</span><span>TikTok</span><span>Reels</span></span>
           </div>
 
           <div class="kpi-row">
             <article class="kpi">
-              <header><h3>ROAS</h3><span class="delta" data-k="roasD">&#9650; 38%</span></header>
-              <p class="kpi-num"><span data-k="roas">4.2</span><small>x</small></p>
+              <header><h3>ROAS</h3><span class="delta">&#9650; 38%</span></header>
+              <p class="kpi-num"><span data-to="4.2" data-dec="1">4.2</span><small>x</small></p>
               <p class="kpi-sub">Target 3.5x <span class="hit">On target</span></p>
-              <svg class="spark" data-spark="roas" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"></svg>
-              <p class="kpi-why">Set up front, so every dollar has a job.</p>
+              <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><path class="fill" d="M0 40 L22 38 L44 37 L66 33 L88 30 L110 20 L132 14 L154 12 L176 10 L200 6 L200 44 L0 44 Z"/><path d="M0 40 L22 38 L44 37 L66 33 L88 30 L110 20 L132 14 L154 12 L176 10 L200 6"/></svg>
             </article>
             <article class="kpi">
-              <header><h3>CAC</h3><span class="delta" data-k="cacD">&#9660; 27%</span></header>
-              <p class="kpi-num"><small class="cur">$</small><span data-k="cac">38</span></p>
+              <header><h3>CAC</h3><span class="delta">&#9660; 27%</span></header>
+              <p class="kpi-num"><small class="cur">$</small><span data-to="38" data-dec="0">38</span></p>
               <p class="kpi-sub">Target $45 <span class="hit">Under target</span></p>
-              <svg class="spark" data-spark="cac" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"></svg>
-              <p class="kpi-why">What a new customer really costs you.</p>
+              <svg class="spark" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"><rect x="2" y="2" width="16" height="42" rx="2"/><rect x="22" y="5" width="16" height="39" rx="2"/><rect x="42" y="8" width="16" height="36" rx="2"/><rect x="62" y="10" width="16" height="34" rx="2"/><rect x="82" y="13" width="16" height="31" rx="2"/><rect x="102" y="15" width="16" height="29" rx="2"/><rect x="122" y="17" width="16" height="27" rx="2"/><rect x="142" y="19" width="16" height="25" rx="2"/><rect x="162" y="21" width="16" height="23" rx="2"/><rect x="182" y="23" width="16" height="21" rx="2"/></svg>
             </article>
             <article class="kpi">
-              <header><h3>Creative testing</h3><span class="delta" data-k="winD">3 winners</span></header>
-              <p class="kpi-num"><span data-k="ads">12</span><small class="unit">ads live</small></p>
-              <p class="kpi-sub"><span class="key win"></span>Winning <span class="key test"></span>Testing <span class="key off"></span>Paused</p>
-              <div class="cells" aria-hidden="true"></div>
-              <p class="kpi-why">New hooks every week. Winners get the budget.</p>
-            </article>
-          </div>
-
-          <div class="dash-low">
-            <figure class="roas-chart">
-              <figcaption><span>ROAS by day</span><span class="legend"><i class="l-line"></i>ROAS <i class="l-target"></i>Target</span></figcaption>
-              <div class="plot">
-                <svg viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
-                  <defs><linearGradient id="roasFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FD3E6" stop-opacity=".32"/><stop offset="1" stop-color="#4FD3E6" stop-opacity="0"/></linearGradient></defs>
-                  <g class="gl"></g>
-                  <path class="area" fill="url(#roasFill)"/>
-                  <line class="target" x1="0" x2="600" vector-effect="non-scaling-stroke"/>
-                  <path class="line" fill="none" vector-effect="non-scaling-stroke"/>
-                  <line class="cross" y1="0" y2="220" vector-effect="non-scaling-stroke"/>
-                </svg>
-                <span class="tgt-tag">Target 3.5x</span>
-                <span class="dot" aria-hidden="true"></span>
-                <span class="tip" aria-hidden="true"></span>
-                <div class="axis-x"></div>
+              <header><h3>Creative testing</h3><span class="delta">3 winners</span></header>
+              <p class="kpi-num"><span data-to="12" data-dec="0">12</span><small class="unit">ads live</small></p>
+              <p class="kpi-sub">New hooks every week</p>
+              <div class="reels" aria-hidden="true">
+                <span class="thumb t1"><em>POV: it actually fits</em><b>Winner</b></span>
+                <span class="thumb t2"><em>why I started this</em></span>
+                <span class="thumb t3"><em>3 ways to wear it</em></span>
+                <span class="thumb t4"><em>20% off ends Sunday</em></span>
               </div>
-            </figure>
-
-            <div class="ads">
-              <div class="ads-head"><span>Creative</span><span>CTR</span><span>CPA</span><span>ROAS</span><span></span></div>
-              <ul>
-                <li><span class="ad"><span class="thumb t1"><em>POV: it actually fits</em></span><span><b>UGC unboxing</b><small>Hook B, 15s</small></span></span><span>3.1%</span><span>$29</span><span>5.8x</span><span class="st win">Winner</span></li>
-                <li><span class="ad"><span class="thumb t2"><em>why I started this</em></span><span><b>Founder story</b><small>Talking head, 22s</small></span></span><span>2.4%</span><span>$34</span><span>4.9x</span><span class="st scale">Scaling</span></li>
-                <li><span class="ad"><span class="thumb t3"><em>3 ways to wear it</em></span><span><b>Creator try-on</b><small>Carousel, 5 cards</small></span></span><span>1.7%</span><span>$41</span><span>3.6x</span><span class="st test">Testing</span></li>
-                <li><span class="ad"><span class="thumb t4"><em>20% off ends Sunday</em></span><span><b>Static offer</b><small>Feed, 1:1</small></span></span><span>0.8%</span><span>$63</span><span>2.1x</span><span class="st off">Paused</span></li>
-              </ul>
-            </div>
+            </article>
           </div>
         </div>
 
@@ -1184,104 +1149,18 @@
 </script>
 <script>
 (function () {
-  var dash = document.querySelector('.dash'); if (!dash) return;
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
-  function series(n, from, to, launch, noise, seed) {
-    var r = rng(seed), out = [];
-    for (var i = 0; i < n; i++) {
-      var t = i / (n - 1), k = 1 / (1 + Math.exp(-(t - launch) * 11));
-      out.push(+(from + (to - from) * k + (r() - .5) * noise).toFixed(2));
-    }
-    return out;
-  }
-  var D = {
-    7:  { roas: 4.4, roasD: '▲ 6%',  cac: 36, cacD: '▼ 5%',  spent: '$5.1k',  budget: '$6k',  pace: .85, ads: 12, win: 1, test: 8, winD: '1 winner',  rs: series(7, 4.0, 4.5, .4, .35, 7),   cs: [39,38,38,37,37,36,36] },
-    30: { roas: 4.2, roasD: '▲ 38%', cac: 38, cacD: '▼ 27%', spent: '$18.4k', budget: '$25k', pace: .74, ads: 12, win: 3, test: 6, winD: '3 winners', rs: series(30, 2.2, 4.4, .38, .5, 11), cs: [52,51,50,49,47,45,43,41,40,38] },
-    90: { roas: 3.6, roasD: '▲ 71%', cac: 44, cacD: '▼ 41%', spent: '$61.2k', budget: '$75k', pace: .82, ads: 38, win: 9, test: 7, winD: '9 winners', rs: series(90, 1.6, 4.3, .45, .55, 5), cs: [74,71,66,62,57,53,49,47,45,44] }
-  };
-  var TARGET = 3.5, YMAX = 5.5, end = new Date(2026, 10, 19);
-  function q(k) { return dash.querySelector('[data-k="' + k + '"]'); }
-  function fmtDate(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
-
-  function count(el, to, dec, prefix) {
-    var from = parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0, t0 = null;
-    if (reduce) { el.textContent = to.toFixed(dec); return; }
-    function step(ts) { t0 = t0 || ts; var p = Math.min(1, (ts - t0) / 900), e = 1 - Math.pow(1 - p, 3);
-      el.textContent = (from + (to - from) * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); }
-    requestAnimationFrame(step);
-  }
-  function sparkLine(svg, arr) {
-    var mn = Math.min.apply(0, arr), mx = Math.max.apply(0, arr), n = arr.length;
-    var pts = arr.map(function (v, i) { return [i / (n - 1) * 200, 40 - (v - mn) / (mx - mn || 1) * 34]; });
-    var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
-    svg.innerHTML = '<path class="fill" d="' + d + ' L200 44 L0 44 Z"/><path d="' + d + '"/>';
-  }
-  function sparkBars(svg, arr) {
-    var mx = Math.max.apply(0, arr), n = arr.length, w = 200 / n, h = '';
-    arr.forEach(function (v, i) { var bh = v / mx * 42; h += '<rect x="' + (i * w + 2).toFixed(1) + '" y="' + (44 - bh).toFixed(1) + '" width="' + (w - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="2"/>'; });
-    svg.innerHTML = h;
-  }
-  function cells(el, d) {
-    var h = '';
-    for (var i = 0; i < d.ads; i++) h += '<i class="' + (i < d.win ? 'win' : i < d.win + d.test ? 'test' : 'off') + '" style="transition-delay:' + (i * 18) + 'ms"></i>';
-    el.classList.remove('on'); el.innerHTML = h;
-    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
-  }
-
-  var plot = dash.querySelector('.plot'), svg = plot.querySelector('svg'), cur = null;
-  function y(v) { return 220 - v / YMAX * 220; }
-  function chart(d) {
-    var n = d.rs.length, pts = d.rs.map(function (v, i) { return [i / (n - 1) * 600, y(v)]; });
-    var line = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
-    svg.querySelector('.line').setAttribute('d', line);
-    svg.querySelector('.area').setAttribute('d', line + ' L600 220 L0 220 Z');
-    var t = svg.querySelector('.target'); t.setAttribute('y1', y(TARGET)); t.setAttribute('y2', y(TARGET));
-    plot.querySelector('.tgt-tag').style.top = (y(TARGET) / 220 * 100) + '%';
-    svg.querySelector('.gl').innerHTML = [1, 2, 3, 4, 5].map(function (v) { return '<line x1="0" x2="600" y1="' + y(v) + '" y2="' + y(v) + '"/>'; }).join('');
-    var ax = plot.querySelector('.axis-x'), labs = '';
-    [0, .5, 1].forEach(function (f) { var dt = new Date(end); dt.setDate(end.getDate() - Math.round((1 - f) * (n - 1))); labs += '<span>' + fmtDate(dt) + '</span>'; });
-    ax.innerHTML = labs;
-    var path = svg.querySelector('.line');
-    if (!reduce && path.getTotalLength) {
-      var L = path.getTotalLength(); path.style.transition = 'none'; path.style.strokeDasharray = L; path.style.strokeDashoffset = L;
-      path.getBoundingClientRect(); path.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.3,.6,.2,1)'; path.style.strokeDashoffset = 0;
-    }
-  }
-  function hover(e) {
-    if (!cur) return;
-    var r = plot.getBoundingClientRect(), n = cur.rs.length;
-    var i = Math.max(0, Math.min(n - 1, Math.round((e.clientX - r.left) / r.width * (n - 1))));
-    var xp = i / (n - 1) * 100, yp = y(cur.rs[i]) / 220 * 100, dt = new Date(end); dt.setDate(end.getDate() - (n - 1 - i));
-    var cr = svg.querySelector('.cross'); cr.setAttribute('x1', xp * 6); cr.setAttribute('x2', xp * 6);
-    var dot = plot.querySelector('.dot'), tip = plot.querySelector('.tip');
-    dot.style.left = xp + '%'; dot.style.top = yp + '%';
-    tip.style.left = Math.max(12, Math.min(88, xp)) + '%'; tip.style.top = yp + '%';
-    tip.innerHTML = fmtDate(dt) + ' &middot; <b>' + cur.rs[i].toFixed(1) + 'x</b> ROAS';
-    plot.classList.add('hov');
-  }
-  plot.addEventListener('pointermove', hover);
-  plot.addEventListener('pointerdown', hover);
-  plot.addEventListener('pointerleave', function () { plot.classList.remove('hov'); });
-
-  function show(r) {
-    var d = D[r]; cur = d;
-    dash.querySelectorAll('.range button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.r == r ? 'true' : 'false'); });
-    count(q('roas'), d.roas, 1); count(q('cac'), d.cac, 0); count(q('ads'), d.ads, 0);
-    q('roasD').textContent = d.roasD; q('cacD').textContent = d.cacD; q('winD').textContent = d.winD;
-    q('spent').textContent = d.spent; q('budget').textContent = d.budget; q('pace').style.width = (d.pace * 100) + '%';
-    sparkLine(dash.querySelector('[data-spark="roas"]'), d.rs.length > 14 ? d.rs.filter(function (_, i) { return i % Math.ceil(d.rs.length / 14) === 0 || i === d.rs.length - 1; }) : d.rs);
-    sparkBars(dash.querySelector('[data-spark="cac"]'), d.cs);
-    cells(dash.querySelector('.cells'), d);
-    chart(d);
-  }
-  dash.querySelectorAll('.range button').forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.r); }); });
-
-  var started = false;
-  function start() { if (started) return; started = true; q('roas').textContent = '0'; q('cac').textContent = '0'; q('ads').textContent = '0'; show(30); }
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { start(); o.disconnect(); } }, { threshold: .25 }).observe(dash);
-  } else start();
+  var dash = document.querySelector('.dash'); if (!dash || !('IntersectionObserver' in window)) return;
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var nums = dash.querySelectorAll('[data-to]');
+  nums.forEach(function (el) { el.textContent = '0'; });
+  new IntersectionObserver(function (es, o) {
+    if (!es[0].isIntersecting) return; o.disconnect();
+    nums.forEach(function (el) {
+      var to = +el.dataset.to, dec = +el.dataset.dec, t0 = null;
+      (function step(ts) { t0 = t0 || ts; var p = Math.min(1, (ts - t0) / 1100), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = (to * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); })(performance.now());
+    });
+  }, { threshold: .3 }).observe(dash);
 })();
 </script>
 </body>
