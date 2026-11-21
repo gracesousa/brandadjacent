@@ -617,6 +617,15 @@
   .spark rect { fill: rgba(79,211,230,.45); }
   @media (prefers-reduced-motion: reduce) { .dash-live { animation: none; } .cells i { transition: none; } }
 
+  /* ---------- Service images ---------- */
+  .svc-body { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 32px; align-items: start; padding-bottom: 32px; }
+  .svc-body p { padding-bottom: 0; }
+  .svc-img { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 20px; background: var(--sage);
+    opacity: 0; transform: translateY(14px) scale(.98); transition: opacity .6s ease .15s, transform .7s cubic-bezier(.2,.75,.15,1) .15s; }
+  .item.open .svc-img { opacity: 1; transform: none; }
+  @media (max-width: 760px) { .svc-body { grid-template-columns: 1fr; gap: 20px; padding-bottom: 26px; } }
+  @media (prefers-reduced-motion: reduce) { .svc-img { transition: none; } }
+
   /* ---------- Cyan hover on links ---------- */
   a, .nav a.u { transition: color .25s ease, border-color .25s ease; }
   .inquire .note a:hover, .contact .links a:hover, .site-foot a:hover, .social a:hover {
@@ -842,19 +851,19 @@
       <ul class="list">
         <li class="item reveal" style="--d:1">
           <button type="button" aria-expanded="false" aria-controls="svc-1"><span class="name">Brand Strategy</span><span class="icon" aria-hidden="true"></span></button>
-          <div class="panel" id="svc-1" role="region"><div><p>Positioning, messaging, and voice, so everything you put out sounds like you.</p></div></div>
+          <div class="panel" id="svc-1" role="region"><div><div class="svc-body"><p>Positioning, messaging, and voice, so everything you put out sounds like you.</p><img class="svc-img" src="assets/svc-brand.jpg" alt="A brand moodboard with green, cream, and cyan swatches on a studio desk" width="1200" height="800" loading="lazy" decoding="async"></div></div></div>
         </li>
         <li class="item reveal" style="--d:2">
           <button type="button" aria-expanded="false" aria-controls="svc-2"><span class="name">Content, Copy &amp; Social Media</span><span class="icon" aria-hidden="true"></span></button>
-          <div class="panel" id="svc-2" role="region"><div><p>Social media content, emails, blogs, and campaign writing that is clear, warm, and on-brand.</p></div></div>
+          <div class="panel" id="svc-2" role="region"><div><div class="svc-body"><p>Social media content, emails, blogs, and campaign writing that is clear, warm, and on-brand.</p><img class="svc-img" src="assets/svc-content.jpg" alt="Hands filming a styled product flat lay on a phone during a content shoot" width="1200" height="800" loading="lazy" decoding="async"></div></div></div>
         </li>
         <li class="item reveal" style="--d:3">
           <button type="button" aria-expanded="false" aria-controls="svc-3"><span class="name">Paid Media</span><span class="icon" aria-hidden="true"></span></button>
-          <div class="panel" id="svc-3" role="region"><div><p>Planning, launching, and optimizing paid social campaigns that reach the right people and pay for themselves.</p></div></div>
+          <div class="panel" id="svc-3" role="region"><div><div class="svc-body"><p>Planning, launching, and optimizing paid social campaigns that reach the right people and pay for themselves.</p><img class="svc-img" src="assets/svc-paid.jpg" alt="A laptop showing a campaign dashboard with rising charts" width="1200" height="800" loading="lazy" decoding="async"></div></div></div>
         </li>
         <li class="item reveal" style="--d:4">
           <button type="button" aria-expanded="false" aria-controls="svc-4"><span class="name">UGC Strategy</span><span class="icon" aria-hidden="true"></span></button>
-          <div class="panel" id="svc-4" role="region"><div><p>Sourcing creators, writing briefs, and building user-generated content programs that feel real and convert.</p></div></div>
+          <div class="panel" id="svc-4" role="region"><div><div class="svc-body"><p>Sourcing creators, writing briefs, and building user-generated content programs that feel real and convert.</p><img class="svc-img" src="assets/svc-ugc.jpg" alt="A creator filming herself on her phone holding a skincare product" width="1200" height="800" loading="lazy" decoding="async"></div></div></div>
         </li>
       </ul>
       <div class="rates">
