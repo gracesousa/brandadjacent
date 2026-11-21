@@ -483,6 +483,134 @@
   .chart:hover { transform: translateY(-4px); border-color: rgba(79,211,230,.35); background: rgba(79,211,230,.06); }
   @media (prefers-reduced-motion: reduce) { .chart .pulse { animation: none; opacity: 0; } }
 
+  /* ---------- Performance dashboard ---------- */
+  .perf-panel { display: block; }
+  .perf-head { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 48px; align-items: end; margin-bottom: clamp(24px, 3vw, 36px); position: relative; z-index: 1; }
+  .perf-head h2 { font-size: clamp(40px, 4.8vw, 68px); }
+  .perf-head h2 em { color: var(--butter); }
+  .perf-head p { color: rgba(243,239,231,.82); max-width: 470px; }
+  .dash { --dl: rgba(243,239,231,.09); --dm: rgba(243,239,231,.6); position: relative; z-index: 1; background: rgba(9,18,13,.38); border: 1px solid var(--dl); border-radius: 22px; padding: 10px; font-variant-numeric: tabular-nums; }
+  .dash-bar { display: flex; align-items: center; gap: 14px 22px; flex-wrap: wrap; padding: 8px 10px 14px; font-size: 13.5px; }
+  .dash-camp { display: flex; align-items: center; gap: 10px; }
+  .dash-camp b { font-weight: 600; }
+  .dash-live { width: 8px; height: 8px; border-radius: 50%; background: var(--butter); box-shadow: 0 0 0 0 rgba(79,211,230,.6); animation: dlive 2s ease-out infinite; }
+  @keyframes dlive { to { box-shadow: 0 0 0 9px rgba(79,211,230,0); } }
+  .chans { display: flex; gap: 6px; }
+  .chans span { font-size: 12px; padding: 3px 9px; border-radius: 999px; border: 1px solid var(--dl); color: var(--dm); }
+  .pacing { display: flex; align-items: center; gap: 10px; margin-left: auto; color: var(--dm); }
+  .pacing .track { width: 120px; height: 6px; border-radius: 6px; background: rgba(243,239,231,.1); overflow: hidden; }
+  .pacing .track i { display: block; height: 100%; width: 0; border-radius: 6px; background: var(--butter); transition: width 1.2s cubic-bezier(.3,.6,.2,1); }
+  .pacing b { color: var(--bone); font-weight: 600; }
+  .range { display: flex; padding: 3px; border-radius: 999px; background: rgba(243,239,231,.06); }
+  .range button { font: 600 12px var(--sans); color: var(--dm); background: none; border: 0; padding: 6px 12px; border-radius: 999px; cursor: pointer; transition: background .2s, color .2s; }
+  .range button:hover { color: var(--bone); }
+  .range button[aria-pressed="true"] { background: var(--bone); color: var(--ink); }
+
+  .kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .kpi { position: relative; background: rgba(243,239,231,.045); border: 1px solid var(--dl); border-radius: 16px; padding: 18px 20px 16px; display: flex; flex-direction: column; transition: border-color .3s, background .3s; }
+  .kpi:hover { border-color: rgba(79,211,230,.4); background: rgba(79,211,230,.06); }
+  .kpi header { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .kpi h3 { font: 600 14px var(--sans); color: var(--bone); }
+  .delta { font-size: 12px; font-weight: 600; color: var(--ink); background: var(--butter); padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .kpi-num { font: 600 clamp(48px, 5.2vw, 68px)/1 var(--sans); letter-spacing: -.035em; margin-top: 14px; color: var(--bone); }
+  .kpi-num small { font-size: .42em; letter-spacing: 0; margin-left: 2px; color: var(--dm); font-weight: 500; }
+  .kpi-num small.cur { margin: 0 2px 0 0; vertical-align: .62em; }
+  .kpi-num small.unit { font-size: 15px; margin-left: 10px; }
+  .kpi-sub { font-size: 12.5px; color: var(--dm); margin-top: 8px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .kpi-sub .hit { color: var(--butter); font-weight: 600; }
+  .kpi-sub .hit::before { content: "\2713"; margin: 0 4px 0 4px; }
+  .key { width: 8px; height: 8px; border-radius: 2px; display: inline-block; margin-left: 4px; }
+  .key:first-child { margin-left: 0; }
+  .key.win, .cells i.win { background: var(--butter); }
+  .key.test, .cells i.test { box-shadow: inset 0 0 0 1.5px rgba(243,239,231,.55); }
+  .key.off, .cells i.off { background: rgba(243,239,231,.12); }
+  .spark { width: 100%; height: 44px; margin-top: 14px; overflow: visible; }
+  .spark path { fill: none; stroke: var(--butter); stroke-width: 2; vector-effect: non-scaling-stroke; stroke-linejoin: round; stroke-linecap: round; }
+  .spark .fill { fill: rgba(79,211,230,.14); stroke: none; }
+  .spark rect { fill: rgba(79,211,230,.55); }
+  .spark rect:last-of-type { fill: var(--butter); }
+  .cells { display: grid; grid-template-columns: repeat(auto-fill, minmax(14px, 1fr)); gap: 4px; margin-top: 14px; min-height: 44px; align-content: end; }
+  .cells i { aspect-ratio: 9 / 16; border-radius: 3px; transform: scale(.4); opacity: 0; transition: transform .5s cubic-bezier(.2,.8,.2,1.3), opacity .4s; }
+  .cells.on i { transform: none; opacity: 1; }
+  .kpi-why { font-size: 13px; line-height: 1.45; color: rgba(243,239,231,.78); margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--dl); }
+
+  .dash-low { display: grid; grid-template-columns: 1.15fr 1fr; gap: 10px; margin-top: 10px; }
+  .roas-chart, .ads { margin: 0; background: rgba(243,239,231,.045); border: 1px solid var(--dl); border-radius: 16px; padding: 16px 18px; min-width: 0; }
+  .roas-chart figcaption { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; font-size: 13px; font-weight: 600; margin-bottom: 12px; }
+  .legend { display: flex; align-items: center; gap: 6px; font-weight: 500; color: var(--dm); font-size: 12px; }
+  .legend i { display: inline-block; width: 14px; height: 0; border-top: 2px solid var(--butter); margin-left: 8px; }
+  .legend i.l-target { border-top: 2px dashed #FF8FC1; }
+  .plot { position: relative; height: 220px; }
+  .plot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .plot .gl line { stroke: rgba(243,239,231,.07); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .plot .line { stroke: var(--butter); stroke-width: 2; stroke-linejoin: round; filter: drop-shadow(0 0 5px rgba(79,211,230,.5)); }
+  .plot .target { stroke: #FF8FC1; stroke-width: 1.5; stroke-dasharray: 5 5; }
+  .plot .cross { stroke: rgba(243,239,231,.35); stroke-width: 1; opacity: 0; }
+  .plot .tgt-tag { position: absolute; left: 6px; font-size: 11.5px; font-weight: 600; color: var(--bone); background: var(--moss-deep); border: 1px solid rgba(255,143,193,.6); padding: 2px 8px; border-radius: 999px; transform: translateY(-140%); }
+  .plot .dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--butter); border: 2px solid var(--moss-deep); transform: translate(-50%, -50%); opacity: 0; pointer-events: none; }
+  .plot .tip { position: absolute; top: 0; transform: translate(-50%, calc(-100% - 10px)); background: var(--bone); color: var(--ink); font-size: 12px; line-height: 1.35; padding: 6px 10px; border-radius: 10px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .15s; z-index: 2; }
+  .plot .tip b { font-weight: 700; }
+  .plot.hov .cross, .plot.hov .dot, .plot.hov .tip { opacity: 1; }
+  .axis-x { position: absolute; left: 0; right: 0; bottom: -22px; display: flex; justify-content: space-between; font-size: 11px; color: var(--dm); }
+  .roas-chart { padding-bottom: 36px; display: flex; flex-direction: column; }
+  .roas-chart .plot { flex: 1; min-height: 220px; height: auto; }
+
+  .ads { padding: 12px 8px; font-size: 13px; }
+  .ads-head, .ads li { display: grid; grid-template-columns: minmax(0, 2.4fr) .7fr .7fr .7fr 1fr; align-items: center; gap: 8px; padding: 0 10px; }
+  .ads-head { font-size: 11.5px; color: var(--dm); padding-bottom: 8px; border-bottom: 1px solid var(--dl); }
+  .ads ul { list-style: none; }
+  .ads li { padding-top: 9px; padding-bottom: 9px; border-radius: 12px; transition: background .2s; }
+  .ads li + li { border-top: 1px solid var(--dl); }
+  .ads li:hover { background: rgba(243,239,231,.05); }
+  .ads li > span:nth-child(n+2):not(.st) { font-weight: 600; }
+  .ad { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .ad b { display: block; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ad small { display: block; font-size: 11.5px; color: var(--dm); white-space: nowrap; }
+  .thumb { position: relative; flex: none; width: 40px; height: 70px; border-radius: 8px; overflow: hidden; display: flex; align-items: flex-end; padding: 4px; }
+  .thumb::before { content: ""; position: absolute; left: 50%; top: 40%; transform: translate(-40%, -50%); border-style: solid; border-width: 5px 0 5px 8px; border-color: transparent transparent transparent rgba(255,255,255,.9); }
+  .thumb em { position: relative; font: 700 7px/1.15 var(--sans); font-style: normal; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.45); }
+  .thumb.t1 { background: linear-gradient(160deg, #FF8FC1, #8E4B6E 60%, #2B1C26); }
+  .thumb.t2 { background: linear-gradient(160deg, #9FE7F0, #127A8C 55%, #0B2B31); }
+  .thumb.t3 { background: linear-gradient(160deg, #E9DCC5, #B98F62 55%, #3E2C1C); }
+  .thumb.t4 { background: linear-gradient(160deg, #6E7D70, #3A4A3E); }
+  .thumb.t4::before { opacity: .35; }
+  .st { justify-self: start; font-size: 11.5px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .st.win { background: var(--butter); color: var(--ink); }
+  .st.scale { box-shadow: inset 0 0 0 1.5px var(--butter); color: var(--butter); }
+  .st.test { box-shadow: inset 0 0 0 1.5px rgba(243,239,231,.4); color: var(--bone); }
+  .st.off { color: var(--dm); background: rgba(243,239,231,.08); }
+  .perf-panel .illus-note { margin-top: 14px; }
+
+  @media (max-width: 1020px) {
+    .dash-low { grid-template-columns: 1fr; }
+    .pacing { margin-left: 0; }
+  }
+  @media (max-width: 860px) {
+    .perf-head { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: 1fr; }
+    .kpi { display: grid; grid-template-columns: 1fr 1fr; column-gap: 16px; }
+    .kpi header, .kpi .kpi-why { grid-column: 1 / -1; }
+    .kpi .spark, .kpi .cells { grid-column: 2; grid-row: 2 / 4; align-self: center; margin-top: 10px; }
+    .kpi-num, .kpi-sub { grid-column: 1; }
+  }
+  @media (max-width: 560px) {
+    .dash { padding: 6px; border-radius: 18px; }
+    .dash-bar { padding: 8px 8px 12px; }
+    .range { width: 100%; }
+    .range button { flex: 1; }
+    .pacing .track { flex: 1; width: auto; }
+    .pacing { width: 100%; }
+    .kpi { display: flex; }
+    .kpi .spark, .kpi .cells { align-self: stretch; }
+    .dash-camp b { white-space: nowrap; }
+    .chans span { font-size: 11px; padding: 2px 7px; }
+    .ads-head, .ads li { grid-template-columns: minmax(0, 1fr) auto auto; gap: 14px; padding: 0 6px; }
+    .ads-head span:nth-child(2), .ads-head span:nth-child(3), .ads li > span:nth-child(2), .ads li > span:nth-child(3) { display: none; }
+    .ads li { padding-top: 9px; padding-bottom: 9px; }
+    .roas-chart .plot { min-height: 180px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .dash-live { animation: none; } .cells i { transition: none; } }
+
   /* ---------- Cyan hover on links ---------- */
   a, .nav a.u { transition: color .25s ease, border-color .25s ease; }
   .inquire .note a:hover, .contact .links a:hover, .site-foot a:hover, .social a:hover {
@@ -653,62 +781,88 @@
   <!-- Results: illustrative growth graphics -->
   <section class="results" aria-labelledby="results-title">
     <div class="wrap scale-in">
-      <div class="bubble-field perf" data-n="22" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
-      <div class="panel-dark reveal">
-        <div class="results-copy">
+      <div class="bubble-field perf" data-n="10" data-seed="11" data-rise="1" data-max="72" aria-hidden="true"></div>
+      <div class="panel-dark perf-panel reveal">
+        <div class="perf-head">
           <h2 class="display split" id="results-title">Built to <em>perform.</em></h2>
-          <p>We set your ROAS and spend targets up front, then build full-funnel campaigns around them, with clear reporting on CAC, CPA, and conversion rate.</p>
-          <ul class="jargon"><li>ROAS targets</li><li>Spend pacing</li><li>Creative testing</li></ul>
+          <p>We set your ROAS and CAC targets before a dollar goes out, test new creative every week, and report on what's actually driving revenue across Meta, TikTok, and Instagram.</p>
         </div>
 
-        <figure class="chart big" aria-label="Illustration: reach rising sharply after a campaign launch">
-          <figcaption>Paid social reach</figcaption>
-          <svg viewBox="0 0 640 300" preserveAspectRatio="none" aria-hidden="true">
-            <defs>
-              <linearGradient id="reachFill" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#4FD3E6" stop-opacity=".38"/>
-                <stop offset="1" stop-color="#4FD3E6" stop-opacity="0"/>
-              </linearGradient>
-            </defs>
-            <g class="grid"><line x1="0" y1="60" x2="640" y2="60"/><line x1="0" y1="130" x2="640" y2="130"/><line x1="0" y1="200" x2="640" y2="200"/><line x1="0" y1="270" x2="640" y2="270"/></g>
-            <line class="launch" x1="300" y1="20" x2="300" y2="270"/>
-            <path d="M0 250 C40 248 70 244 110 240 S180 236 220 232 S280 226 300 214 S340 120 380 96 S440 70 480 66 S560 52 640 38 L640 270 L0 270 Z" fill="url(#reachFill)"/>
-            <path class="draw" d="M0 250 C40 248 70 244 110 240 S180 236 220 232 S280 226 300 214 S340 120 380 96 S440 70 480 66 S560 52 640 38" fill="none" stroke="#4FD3E6" stroke-width="2.5" stroke-linecap="round"/>
-            <circle class="pulse" cx="640" cy="38" r="6" fill="none" stroke="#4FD3E6" stroke-width="2"/>
-            <circle cx="640" cy="38" r="6" fill="#4FD3E6" stroke="#1D2E23" stroke-width="2.5"/>
-          </svg>
-          <span class="tag-launch">Campaign launch</span>
-        </figure>
+        <div class="dash" aria-label="Illustrative paid social dashboard">
+          <div class="dash-bar">
+            <div class="dash-camp">
+              <span class="dash-live" aria-hidden="true"></span>
+              <b>Spring launch</b>
+              <span class="chans"><span>Meta</span><span>TikTok</span><span>Reels</span></span>
+            </div>
+            <div class="pacing">
+              <span class="lbl">Spend pacing</span>
+              <span class="track"><i data-k="pace"></i></span>
+              <span class="pace-val"><b data-k="spent">$18.4k</b> of <span data-k="budget">$25k</span></span>
+            </div>
+            <div class="range" role="group" aria-label="Date range">
+              <button type="button" data-r="7">7D</button>
+              <button type="button" data-r="30" aria-pressed="true">30D</button>
+              <button type="button" data-r="90">90D</button>
+            </div>
+          </div>
 
-        <figure class="chart mini" aria-label="Illustration: engagement bars growing month over month">
-          <figcaption>Engagement</figcaption>
-          <svg viewBox="0 0 300 140" aria-hidden="true">
-            <g class="grid"><line x1="0" y1="135" x2="300" y2="135"/></g>
-            <defs><linearGradient id="barFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9FE7F0"/><stop offset="1" stop-color="#4FD3E6" stop-opacity=".55"/></linearGradient></defs>
-            <g class="bars" fill="url(#barFill)">
-              <rect x="6"   y="105" width="30" height="30" rx="4"/>
-              <rect x="44"  y="96"  width="30" height="39" rx="4"/>
-              <rect x="82"  y="88"  width="30" height="47" rx="4"/>
-              <rect x="120" y="74"  width="30" height="61" rx="4"/>
-              <rect x="158" y="62"  width="30" height="73" rx="4"/>
-              <rect x="196" y="44"  width="30" height="91" rx="4"/>
-              <rect x="234" y="30"  width="30" height="105" rx="4"/>
-              <rect x="272" y="12"  width="22" height="123" rx="4"/>
-            </g>
-          </svg>
-        </figure>
+          <div class="kpi-row">
+            <article class="kpi">
+              <header><h3>ROAS</h3><span class="delta" data-k="roasD">&#9650; 38%</span></header>
+              <p class="kpi-num"><span data-k="roas">4.2</span><small>x</small></p>
+              <p class="kpi-sub">Target 3.5x <span class="hit">On target</span></p>
+              <svg class="spark" data-spark="roas" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <p class="kpi-why">Set up front, so every dollar has a job.</p>
+            </article>
+            <article class="kpi">
+              <header><h3>CAC</h3><span class="delta" data-k="cacD">&#9660; 27%</span></header>
+              <p class="kpi-num"><small class="cur">$</small><span data-k="cac">38</span></p>
+              <p class="kpi-sub">Target $45 <span class="hit">Under target</span></p>
+              <svg class="spark" data-spark="cac" viewBox="0 0 200 44" preserveAspectRatio="none" aria-hidden="true"></svg>
+              <p class="kpi-why">What a new customer really costs you.</p>
+            </article>
+            <article class="kpi">
+              <header><h3>Creative testing</h3><span class="delta" data-k="winD">3 winners</span></header>
+              <p class="kpi-num"><span data-k="ads">12</span><small class="unit">ads live</small></p>
+              <p class="kpi-sub"><span class="key win"></span>Winning <span class="key test"></span>Testing <span class="key off"></span>Paused</p>
+              <div class="cells" aria-hidden="true"></div>
+              <p class="kpi-why">New hooks every week. Winners get the budget.</p>
+            </article>
+          </div>
 
-        <figure class="chart mini" aria-label="Illustration: conversions trending upward">
-          <figcaption>Conversions</figcaption>
-          <svg viewBox="0 0 300 140" aria-hidden="true">
-            <g class="grid"><line x1="0" y1="45" x2="300" y2="45"/><line x1="0" y1="90" x2="300" y2="90"/><line x1="0" y1="135" x2="300" y2="135"/></g>
-            <path class="draw" d="M4 120 L44 114 L84 116 L124 100 L164 92 L204 70 L244 52 L292 22" fill="none" stroke="#4FD3E6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle class="pulse" cx="292" cy="22" r="5.5" fill="none" stroke="#4FD3E6" stroke-width="2"/>
-            <circle cx="292" cy="22" r="5.5" fill="#4FD3E6" stroke="#1D2E23" stroke-width="2"/>
-          </svg>
-        </figure>
+          <div class="dash-low">
+            <figure class="roas-chart">
+              <figcaption><span>ROAS by day</span><span class="legend"><i class="l-line"></i>ROAS <i class="l-target"></i>Target</span></figcaption>
+              <div class="plot">
+                <svg viewBox="0 0 600 220" preserveAspectRatio="none" aria-hidden="true">
+                  <defs><linearGradient id="roasFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4FD3E6" stop-opacity=".32"/><stop offset="1" stop-color="#4FD3E6" stop-opacity="0"/></linearGradient></defs>
+                  <g class="gl"></g>
+                  <path class="area" fill="url(#roasFill)"/>
+                  <line class="target" x1="0" x2="600" vector-effect="non-scaling-stroke"/>
+                  <path class="line" fill="none" vector-effect="non-scaling-stroke"/>
+                  <line class="cross" y1="0" y2="220" vector-effect="non-scaling-stroke"/>
+                </svg>
+                <span class="tgt-tag">Target 3.5x</span>
+                <span class="dot" aria-hidden="true"></span>
+                <span class="tip" aria-hidden="true"></span>
+                <div class="axis-x"></div>
+              </div>
+            </figure>
 
-        <p class="illus-note">Illustrative graphics, not client data.</p>
+            <div class="ads">
+              <div class="ads-head"><span>Creative</span><span>CTR</span><span>CPA</span><span>ROAS</span><span></span></div>
+              <ul>
+                <li><span class="ad"><span class="thumb t1"><em>POV: it actually fits</em></span><span><b>UGC unboxing</b><small>Hook B, 15s</small></span></span><span>3.1%</span><span>$29</span><span>5.8x</span><span class="st win">Winner</span></li>
+                <li><span class="ad"><span class="thumb t2"><em>why I started this</em></span><span><b>Founder story</b><small>Talking head, 22s</small></span></span><span>2.4%</span><span>$34</span><span>4.9x</span><span class="st scale">Scaling</span></li>
+                <li><span class="ad"><span class="thumb t3"><em>3 ways to wear it</em></span><span><b>Creator try-on</b><small>Carousel, 5 cards</small></span></span><span>1.7%</span><span>$41</span><span>3.6x</span><span class="st test">Testing</span></li>
+                <li><span class="ad"><span class="thumb t4"><em>20% off ends Sunday</em></span><span><b>Static offer</b><small>Feed, 1:1</small></span></span><span>0.8%</span><span>$63</span><span>2.1x</span><span class="st off">Paused</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <p class="illus-note">Illustrative dashboard, not client data.</p>
       </div>
     </div>
   </section>
@@ -1027,6 +1181,108 @@
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+</script>
+<script>
+(function () {
+  var dash = document.querySelector('.dash'); if (!dash) return;
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function rng(seed) { return function () { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; }
+  function series(n, from, to, launch, noise, seed) {
+    var r = rng(seed), out = [];
+    for (var i = 0; i < n; i++) {
+      var t = i / (n - 1), k = 1 / (1 + Math.exp(-(t - launch) * 11));
+      out.push(+(from + (to - from) * k + (r() - .5) * noise).toFixed(2));
+    }
+    return out;
+  }
+  var D = {
+    7:  { roas: 4.4, roasD: '▲ 6%',  cac: 36, cacD: '▼ 5%',  spent: '$5.1k',  budget: '$6k',  pace: .85, ads: 12, win: 1, test: 8, winD: '1 winner',  rs: series(7, 4.0, 4.5, .4, .35, 7),   cs: [39,38,38,37,37,36,36] },
+    30: { roas: 4.2, roasD: '▲ 38%', cac: 38, cacD: '▼ 27%', spent: '$18.4k', budget: '$25k', pace: .74, ads: 12, win: 3, test: 6, winD: '3 winners', rs: series(30, 2.2, 4.4, .38, .5, 11), cs: [52,51,50,49,47,45,43,41,40,38] },
+    90: { roas: 3.6, roasD: '▲ 71%', cac: 44, cacD: '▼ 41%', spent: '$61.2k', budget: '$75k', pace: .82, ads: 38, win: 9, test: 7, winD: '9 winners', rs: series(90, 1.6, 4.3, .45, .55, 5), cs: [74,71,66,62,57,53,49,47,45,44] }
+  };
+  var TARGET = 3.5, YMAX = 5.5, end = new Date(2026, 10, 19);
+  function q(k) { return dash.querySelector('[data-k="' + k + '"]'); }
+  function fmtDate(d) { return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }); }
+
+  function count(el, to, dec, prefix) {
+    var from = parseFloat(el.textContent.replace(/[^0-9.]/g, '')) || 0, t0 = null;
+    if (reduce) { el.textContent = to.toFixed(dec); return; }
+    function step(ts) { t0 = t0 || ts; var p = Math.min(1, (ts - t0) / 900), e = 1 - Math.pow(1 - p, 3);
+      el.textContent = (from + (to - from) * e).toFixed(dec); if (p < 1) requestAnimationFrame(step); }
+    requestAnimationFrame(step);
+  }
+  function sparkLine(svg, arr) {
+    var mn = Math.min.apply(0, arr), mx = Math.max.apply(0, arr), n = arr.length;
+    var pts = arr.map(function (v, i) { return [i / (n - 1) * 200, 40 - (v - mn) / (mx - mn || 1) * 34]; });
+    var d = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
+    svg.innerHTML = '<path class="fill" d="' + d + ' L200 44 L0 44 Z"/><path d="' + d + '"/>';
+  }
+  function sparkBars(svg, arr) {
+    var mx = Math.max.apply(0, arr), n = arr.length, w = 200 / n, h = '';
+    arr.forEach(function (v, i) { var bh = v / mx * 42; h += '<rect x="' + (i * w + 2).toFixed(1) + '" y="' + (44 - bh).toFixed(1) + '" width="' + (w - 4).toFixed(1) + '" height="' + bh.toFixed(1) + '" rx="2"/>'; });
+    svg.innerHTML = h;
+  }
+  function cells(el, d) {
+    var h = '';
+    for (var i = 0; i < d.ads; i++) h += '<i class="' + (i < d.win ? 'win' : i < d.win + d.test ? 'test' : 'off') + '" style="transition-delay:' + (i * 18) + 'ms"></i>';
+    el.classList.remove('on'); el.innerHTML = h;
+    requestAnimationFrame(function () { requestAnimationFrame(function () { el.classList.add('on'); }); });
+  }
+
+  var plot = dash.querySelector('.plot'), svg = plot.querySelector('svg'), cur = null;
+  function y(v) { return 220 - v / YMAX * 220; }
+  function chart(d) {
+    var n = d.rs.length, pts = d.rs.map(function (v, i) { return [i / (n - 1) * 600, y(v)]; });
+    var line = 'M' + pts.map(function (p) { return p[0].toFixed(1) + ' ' + p[1].toFixed(1); }).join(' L');
+    svg.querySelector('.line').setAttribute('d', line);
+    svg.querySelector('.area').setAttribute('d', line + ' L600 220 L0 220 Z');
+    var t = svg.querySelector('.target'); t.setAttribute('y1', y(TARGET)); t.setAttribute('y2', y(TARGET));
+    plot.querySelector('.tgt-tag').style.top = (y(TARGET) / 220 * 100) + '%';
+    svg.querySelector('.gl').innerHTML = [1, 2, 3, 4, 5].map(function (v) { return '<line x1="0" x2="600" y1="' + y(v) + '" y2="' + y(v) + '"/>'; }).join('');
+    var ax = plot.querySelector('.axis-x'), labs = '';
+    [0, .5, 1].forEach(function (f) { var dt = new Date(end); dt.setDate(end.getDate() - Math.round((1 - f) * (n - 1))); labs += '<span>' + fmtDate(dt) + '</span>'; });
+    ax.innerHTML = labs;
+    var path = svg.querySelector('.line');
+    if (!reduce && path.getTotalLength) {
+      var L = path.getTotalLength(); path.style.transition = 'none'; path.style.strokeDasharray = L; path.style.strokeDashoffset = L;
+      path.getBoundingClientRect(); path.style.transition = 'stroke-dashoffset 1.4s cubic-bezier(.3,.6,.2,1)'; path.style.strokeDashoffset = 0;
+    }
+  }
+  function hover(e) {
+    if (!cur) return;
+    var r = plot.getBoundingClientRect(), n = cur.rs.length;
+    var i = Math.max(0, Math.min(n - 1, Math.round((e.clientX - r.left) / r.width * (n - 1))));
+    var xp = i / (n - 1) * 100, yp = y(cur.rs[i]) / 220 * 100, dt = new Date(end); dt.setDate(end.getDate() - (n - 1 - i));
+    var cr = svg.querySelector('.cross'); cr.setAttribute('x1', xp * 6); cr.setAttribute('x2', xp * 6);
+    var dot = plot.querySelector('.dot'), tip = plot.querySelector('.tip');
+    dot.style.left = xp + '%'; dot.style.top = yp + '%';
+    tip.style.left = Math.max(12, Math.min(88, xp)) + '%'; tip.style.top = yp + '%';
+    tip.innerHTML = fmtDate(dt) + ' &middot; <b>' + cur.rs[i].toFixed(1) + 'x</b> ROAS';
+    plot.classList.add('hov');
+  }
+  plot.addEventListener('pointermove', hover);
+  plot.addEventListener('pointerdown', hover);
+  plot.addEventListener('pointerleave', function () { plot.classList.remove('hov'); });
+
+  function show(r) {
+    var d = D[r]; cur = d;
+    dash.querySelectorAll('.range button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.r == r ? 'true' : 'false'); });
+    count(q('roas'), d.roas, 1); count(q('cac'), d.cac, 0); count(q('ads'), d.ads, 0);
+    q('roasD').textContent = d.roasD; q('cacD').textContent = d.cacD; q('winD').textContent = d.winD;
+    q('spent').textContent = d.spent; q('budget').textContent = d.budget; q('pace').style.width = (d.pace * 100) + '%';
+    sparkLine(dash.querySelector('[data-spark="roas"]'), d.rs.length > 14 ? d.rs.filter(function (_, i) { return i % Math.ceil(d.rs.length / 14) === 0 || i === d.rs.length - 1; }) : d.rs);
+    sparkBars(dash.querySelector('[data-spark="cac"]'), d.cs);
+    cells(dash.querySelector('.cells'), d);
+    chart(d);
+  }
+  dash.querySelectorAll('.range button').forEach(function (b) { b.addEventListener('click', function () { show(+b.dataset.r); }); });
+
+  var started = false;
+  function start() { if (started) return; started = true; q('roas').textContent = '0'; q('cac').textContent = '0'; q('ads').textContent = '0'; show(30); }
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (es, o) { if (es[0].isIntersecting) { start(); o.disconnect(); } }, { threshold: .25 }).observe(dash);
+  } else start();
+})();
 </script>
 </body>
 </html>
